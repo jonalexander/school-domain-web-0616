@@ -24,11 +24,9 @@ class School
   end
 
   def sort
-    #sorts all keys
-    @roster.sort.to_h
     #sorts all values and reassigns key/value pairs
-    @roster.each do |grade, student_array|
-      @roster[grade] = student_array.sort
+    @roster.each_with_object({}) do |(grade, student_array), sorted_hash|
+      sorted_hash[grade] = student_array.sort
     end
   end
 end
